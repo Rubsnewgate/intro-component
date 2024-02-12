@@ -1,0 +1,58 @@
+// Primary Colors
+$red: hsl(0, 100%, 74%);
+$green: hsl(154, 59%, 51%);
+$blue: hsl(248, 32%, 49%);
+
+// Secondary Colors
+$dark-blue: hsl(249, 10%, 26%);
+$grayish-blue: hsl(246, 25%, 77%);
+$white: hsl(0, 0%, 100%);
+
+// Typography
+$primary-font: 'Poppins', sans-serif;
+
+// Font Sizes
+$sm-size: 1.6rem;
+$error-advice-size: 1.4rem;
+
+// Font Weights
+$normal: 400;
+$medium: 500;
+$semi-bold: 600;
+$bold: 700;
+
+// General Resets
+* {
+	box-sizing: border-box;
+}
+html {
+	font-size: 62.5%;
+}
+body {
+	width: 100%;
+	height: 100vh;
+	margin: 0;
+	padding: 50px 10px;
+	font-family: $primary-font;
+	background-color: $red;
+	background-image: url(../assets/imgs/bg-intro-desktop.png);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+// Flexbox Factory
+@mixin flexbox($direction:null, $justify:null, $align:null, $gap:null) {
+	display: flex;
+	flex-direction: $direction;
+	justify-content: $justify;
+	align-items: $align;
+	gap: $gap;
+}
+
+// Breakpoints
+@media screen and (min-width: 320px) and (max-width: 541px) {
+	body {
+		height: auto;
+		background-image: url(../assets/imgs/bg-intro-mobile.png);
+	}
+}

@@ -1,0 +1,54 @@
+@import 'guide.scss';
+
+// Main Container
+.main-wrapper {
+	grid-template-columns: 1fr;
+}
+
+// Hero Section
+.hero {
+	margin-bottom: 50px;
+	padding: 0;
+	text-align: center;
+	gap: 20px;
+}
+.hero__title {
+	font-size: 3rem;
+}
+.hero__description {
+	font-size: 1.4rem;
+}
+
+// Sign Up Section
+.sign-up {
+	padding: 0;
+}
+.sign-up__free-trial {
+	height: 80px;
+	padding: 0 20px;
+	text-align: center;
+}
+.sign-up__form-wrapper {
+	height: auto;
+}
+.free-trial__description {
+	font-size: 1.4rem;
+}
+.sign-up__form-wrapper {
+	padding: 15px;
+}
+.sign-up__terms-and-conditions {
+	white-space: pre-line;
+}
+
+// Breakpoints
+@media screen and (width: 540px) {
+	body {
+		display: grid;
+		place-content: center;
+		background-image: url(../assets/imgs/bg-intro-desktop.png);
+	}
+	.main-wrapper {
+		width: 420px;
+	}
+}
