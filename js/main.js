@@ -41,6 +41,7 @@ function validateForm () {
 
 	let isFormValid = true
 
+	// the &= operator verifies that all the fields are valid
 	isFormValid &= validateField(
 		inputForName.value,
         nameErrorIcon,
