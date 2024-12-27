@@ -1,0 +1,117 @@
+@use 'guide.sass'
+
+// main Container
+.main-wrapper
+	display: grid
+	grid-template-columns: repeat(2, 1fr)
+	width: 100%
+	height: calc(100vh - 100px)
+
+// hero Section
+.hero
+	@include guide.flexbox(column, center, center, 40px)
+	padding: 0 1vw 0 10vw
+
+.hero__title
+	margin: 0
+	font-size: 4rem
+	line-height: 1.2
+	color: guide.$white
+
+.hero__description
+	margin: 0
+	font-size: guide.$sm-size
+	font-weight: guide.$normal
+	color: guide.$white
+
+// sign-up section
+.sign-up
+	@include guide.flexbox(column, center, center, 25px)
+	padding: 0 10vw 0 1vw
+
+.sign-up__free-trial
+	@include guide.flexbox(row, center, center, null)
+	width: 100%
+	height: 60px
+	background-color: guide.$blue
+	border-radius: 10px
+	box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2)
+
+.free-trial__description
+	font-size: guide.$sm-size
+	color: guide.$white
+	span
+		font-weight: guide.$semi-bold
+
+.sign-up__form-wrapper
+	width: 100%
+	height: auto
+	padding: 25px
+	background-color: guide.$white
+	border-radius: 10px
+	box-shadow: 4px 4px 4px rgba(4, 0, 0, 0.2)
+
+.sign-up__form
+	@include guide.flexbox(column, start, start, 15px)
+
+.input-wrapper
+	position: relative
+	@include guide.flexbox(row, null, center)
+	width: 100%
+
+.form__input
+	width: 100%
+	height: 45px
+	padding: 10px 25px
+	font-size: guide.$sm-size
+	font-weight: guide.$semi-bold
+	color: guide.$dark-blue
+	border: 1px solid guide.$grayish-blue
+	border-radius: 5px
+	&:focus
+		outline: none
+		border-color: guide.$blue
+
+.submit-btn
+	width: 100%
+	height: 45px
+	padding: 15px
+	font-size: guide.$sm-size
+	font-weight: guide.$semi-bold
+	text-transform: uppercase
+	color: guide.$white
+	background-color: guide.$green
+	border: none
+	border-bottom: 4px solid rgba(0, 0, 0, 0.1)
+	border-radius: 5px
+	&:hover
+		cursor: pointer
+
+.sign-up__terms-and-conditions
+	width: 100%
+	font-size: 1.2rem
+	text-align: center
+	color: guide.$grayish-blue
+	a
+		color: guide.$red
+		font-weight: guide.$bold
+		text-decoration: none
+		&:hover
+			cursor: pointer
+
+		&:visited
+			color: guide.$red
+
+// error form advice
+.error-icon
+	display: none
+	position: absolute
+	right: 10px
+
+.advice-error--active
+	display: none
+	align-self: end
+	margin: 0
+	font-size: guide.$error-advice-size
+	font-weight: guide.$semi-bold
+	color: guide.$red

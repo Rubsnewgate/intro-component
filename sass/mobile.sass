@@ -1,0 +1,48 @@
+@use 'guide.sass'
+
+// main Container
+.main-wrapper
+	grid-template-columns: 1fr
+	height: auto
+
+// hero Section
+.hero
+	margin-bottom: 20px
+	padding: 0
+	text-align: center
+	gap: 20px
+
+	&__title
+		font-size: 3rem
+
+	&__description
+		font-size: 1.4rem
+
+// sign-up section
+.sign-up
+	padding: 0
+
+	&__free-trial
+		height: 80px
+		padding: 0 20px
+		text-align: center
+
+	&__form-wrapper
+		height: auto
+
+.free-trial__description
+	font-size: 1.4rem
+
+.sign-up__form-wrapper
+	padding: 15px
+
+.sign-up__terms-and-conditions
+	white-space: pre-line
+
+// breakpoints
+@media screen and (width: 540px)
+	body
+		background-image: url(../assets/imgs/bg-intro-desktop.png)
+
+	.main-wrapper
+		width: 420px

@@ -1,59 +1,68 @@
-function validateForm() {
-	let name = document.getElementById('name').value
-	let lastName = document.getElementById('last-name').value
-	let email = document.getElementById('email').value
-	let password = document.getElementById('password').value
-	let valid = true
+const domElements = {
+	inputForLastName: document.getElementById('last-name'),
+	inputForPassword: document.getElementById('password'),
+	inputForEmail: document.getElementById('email'),
+	inputForName: document.getElementById('name'),
 
-	// Name Validation
-	if (name === '') {
-		document.querySelector('.error-name').style.display = 'block'
-		document.querySelector('.error-name').previousElementSibling.querySelector('.error-icon').style.display = 'block'
-		valid = false
-	}
-	else {
-		document.querySelector('.error-name').style.display = 'none'
-		document.querySelector('.error-name').previousElementSibling.querySelector('.error-icon').style.display = 'none'
-	}
-
-	// Last Name Validation
-	if (lastName === '') {
-		document.querySelector('.error-last-name').style.display = 'block'
-		document.querySelector('.error-last-name').previousElementSibling.querySelector('.error-icon').style.display = 'block'
-		valid = false
-	}
-	else {
-		document.querySelector('.error-last-name').style.display = 'none'
-		document.querySelector('.error-last-name').previousElementSibling.querySelector('.error-icon').style.display = 'none'
-	}
-
-	// Email Validation
-	if (email === '' || !validateEmail(email)) {
-		document.querySelector('.error-email').style.display = 'block'
-		document.querySelector('.error-email').previousElementSibling.querySelector('.error-icon').style.display = 'block'
-		valid = false
-	}
-	else {
-		document.querySelector('.error-email').style.display = 'none'
-		document.querySelector('.error-email').previousElementSibling.querySelector('.error-icon').style.display = 'none'
-	}
-
-	// Password Validation
-	if (password === '') {
-		document.querySelector('.error-password').style.display = 'block'
-		document.querySelector('.error-password').previousElementSibling.querySelector('.error-icon').style.display = 'block'
-		valid = false
-	}
-	else {
-		document.querySelector('.error-password').style.display = 'none'
-		document.querySelector('.error-password').previousElementSibling.querySelector('.error-icon').style.display = 'none'
-	}
-
-	return valid
+	lastNameErrorIcon: document.querySelector('.error-last-name'),
+    passwordErrorIcon: document.querySelector('.error-password'),
+	emailErrorIcon: document.querySelector('.error-email'),
+	nameErrorIcon: document.querySelector('.error-name'),
 }
 
-function validateEmail(email) {
-	let re = /\S+@\S+\.\S+/
+const handleError = (element, errorMessage, isValid) => {
+	const errorIcon = element.previousElementSibling.querySelector('.error-icon')
+	element.textContent = errorMessage
+	element.style.display = isValid ? 'none' : 'block'
+	errorIcon.style.display = isValid ? 'none' : 'block'
+}
 
-	return re.test(email)
+const validateField = (value, errorElement, errorMessage, validationFunc) => {
+	const isValid = validationFunc(value)
+	handleError(errorElement, errorMessage, isValid)
+
+	return isValid
+}
+
+function validateForm () {
+	const {
+		inputForLastName,
+		inputForPassword,
+		inputForEmail,
+		inputForName
+	} = domElements
+
+	const {
+		lastNameErrorIcon,
+		passwordErrorIcon,
+		emailErrorIcon,
+		nameErrorIcon
+	} = domElements
+
+	let isFormValid = true
+
+	isFormValid &= validateField(
+		inputForName.value,
+        nameErrorIcon,
+        'Name cannot be empty.',
+        (value) => value.trim() !== ''
+	)
+	isFormValid &= validateField(
+		inputForLastName.value,
+		lastNameErrorIcon,
+		'Last Name cannot be empty.',
+        (value) => value.trim() !== ''
+	)
+	isFormValid &= validateField(
+		inputForEmail.value,
+		emailErrorIcon,
+        'Invalid email address.',
+        (value) => /\S+@\S+\.\S+/.test(value)
+	)
+	isFormValid &= validateField(
+		inputForPassword.value,
+		passwordErrorIcon,
+        'Password cannot be empty.',
+        (value) => value.trim() !== ''
+	)
 }
