@@ -1,45 +1,54 @@
-// primary Colors
+// Primary Colors
 $red: hsl(0, 100%, 74%)
 $green: hsl(154, 59%, 51%)
 $blue: hsl(248, 32%, 49%)
 
-// secondary Colors
+// Secondary Colors
 $dark-blue: hsl(249, 10%, 26%)
 $grayish-blue: hsl(246, 25%, 77%)
 $white: hsl(0, 0%, 100%)
 
-// typography
+// Typography
 $primary-font: 'Poppins', sans-serif
 
-// font sizes
-$sm-size: 1.6rem
-$error-advice-size: 1.4rem
+// Font sizes
+$lg-size: 2.5rem
+$sm-size: 1rem
+$error-advice-size: 0.75rem
 
-// font weights
+// Font weights
 $normal: 400
 $medium: 500
 $semi-bold: 600
 $bold: 700
 
-// general resets
-*
+// Resets
+*, *::before, *::after
 	box-sizing: border-box
 
-html
-	font-size: 62.5%
+*
+	margin: 0
 
 body
+	display: grid
+	place-content: center
 	width: 100%
 	min-height: 100vh
-	margin: 0
-	padding: 50px 10px
+	padding: calc(0.5rem + 1.5625vw)
 	font-family: $primary-font
 	background-color: $red
-	background-image: url(../assets/imgs/bg-intro-desktop.png)
+	background-image: url(../assets/img/bg-intro-mobile.png)
 	background-size: cover
 	background-repeat: no-repeat
 
-// mixins
+p
+	text-wrap: pretty
+	line-height: 1.5
+
+h1, h2, h3, h4, h5, h6
+	text-wrap: balance
+
+// Layout
 @mixin flexbox($direction:null, $justify:null, $align:null, $gap:null)
 	display: flex
 	flex-direction: $direction
@@ -48,9 +57,6 @@ body
 	gap: $gap
 
 // breakpoints
-@media screen and (max-width: 541px)
+@media screen and (min-width: 45rem)
 	body
-		display: grid
-		place-content: center
-		padding: 2em 1em
-		background-image: url(../assets/imgs/bg-intro-mobile.png)
+		background-image: url(../assets/img/bg-intro-desktop.png)
